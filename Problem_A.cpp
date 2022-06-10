@@ -1,8 +1,8 @@
 //      بسم الله الرحمن الرحيم
 //      All praise is due to ALLAH alone
-
-
-
+ 
+ 
+ 
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
@@ -21,7 +21,7 @@ typedef pair<ll, ll> pll;
 using namespace __gnu_pbds;
 template <class T>
 using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
-
+ 
 #define sa(v) sort(v.begin(), v.end())
 #define sd(v) sort(v.begin(), v.end(), greater<>())
 #define el << '\n'
@@ -29,7 +29,7 @@ using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statisti
 #define PI 3.14159265358979323
 #define file() freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout)
 #define fastIO	ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
-
+ 
 ll bin_expo(ll base, ll pow, ll m)
 {       if (pow == 0) return 1;
         ll ret = bin_expo(base, pow / 2, m) % m;
@@ -47,17 +47,17 @@ const ll inf = 1e17 + 7 ;
 const ll mod = 1e9 + 7 ;
 const int mx = 2e5 + 123 ;
 const double eps = 1e-7 ;
-
-
-
+ 
+ 
+ 
 vl adj[mx] ;
 vl ans ;
 stack<ll>st ;
 ll vis[mx] , n , m , par[mx] ;
 bool cycle ;
-
-
-
+ 
+ 
+ 
 void dfs(int node , int pre_node)
 {
         if(cycle) return ;
@@ -83,8 +83,8 @@ void dfs(int node , int pre_node)
                 }
         }
 }
-
-
+ 
+ 
 void solution()
 {
         cin >> n >> m ;
@@ -114,8 +114,8 @@ void solution()
                 for(auto i:ans) cout << i << " " ; cout el;
         }
 }
-
-
+ 
+ 
 int main()
 {
         fastIO;
