@@ -52,19 +52,77 @@ ll LOG = 21 ;
 // -----------------------------------------------------------------------------------------------------
 
 
+
+void nextPermutation(string & nums) {
+    int n = nums.size() ; 
+    int ind = -1 ; 
+    for(int i=n-2;i>=0;i--) {
+        if(nums[i]<nums[i+1]) {
+            ind = i ; 
+            break ; 
+        }
+    }
+    if(ind==-1) {
+        reverse(nums.begin(),nums.end()) ; 
+        return ; 
+    }
+    int mn = INT_MAX ; 
+    int pos = -1 ; 
+    for(int i=ind+1;i<n;i++) {
+        if(nums[i]>nums[ind]) {
+            if(nums[i]<mn) {
+                mn = nums[i] ; 
+                pos = i ; 
+            }
+        }
+    }
+    vector<char> part2  ; 
+    for(int i=ind;i<n;i++) {
+        if(i==pos) continue ; 
+        part2.push_back(nums[i]) ; 
+    }
+    sort(part2.begin(),part2.end()) ; 
+    nums[ind] = nums[pos] ;
+    int k = 0 ;   
+    for(int i=ind+1;i<n;i++) {
+        nums[i] = part2[k] ;
+        k++ ;  
+    }
+}
+
+ll fact(ll n) {
+    ll ret = 1 ; 
+    for(int i=1;i<=n;i++){
+        ret *= i ; 
+    }
+    return ret ; 
+}
+
+
 void solution(int cs) { 
     string s ; 
-    cin >> s ;  
+    cin >> s ;
+    map<char,ll> mp ; 
+    for(auto it:s) {
+        mp[it] ++ ; 
+    }  
     vector<string>ans ; 
     sort(all(s)) ; 
     ans.push_back(s) ; 
-    while(next_permutation(all(s))) {
-        ans.pb(s) ; 
+    ll n = s.size() ; 
+    ll cnt = fact(n) ; 
+    for(char c='a';c<='z';c++) {
+        if(mp[c]>1)  {
+            cnt/=fact(mp[c]) ; 
+        }
     }
-    cout << ans.size() el ; 
-    for(auto it:ans) {
-        cout << it el ; 
+    cout << cnt el ; 
+    --cnt ; 
+    while(cnt--) {
+        nextPermutation(s) ; 
+        ans.push_back(s) ; 
     }
+    for(auto it:ans) cout << it el ; 
 }
 
 int main() {
